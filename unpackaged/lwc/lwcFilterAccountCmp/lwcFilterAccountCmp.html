@@ -1,0 +1,28 @@
+<template>
+        <lightning-input placeholder="Enter value.." label=' ' name='' value={searchText} onchange={handleChangeText} class="filterdata"></lightning-input>
+        <lightning-button label="Filter Data" variant="brand" onclick={handleFilterClick}></lightning-button>
+        <div class="slds-m-around_medium">
+            <template if:false={isShowCard}>
+                <lightning-layout multiple-rows="true" pull-to-boundary="small">
+                    <template for:each={filteredData} for:item="item">
+                        <lightning-layout-item key={item} padding="around-small">
+                            <lightning-card title={item}>
+                            <!--div class="custom-box slds-box slds-p-around_medium slds-text-align_center">{item}</div-->
+                            </lightning-card>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+            <template if:true={isShowCard}>
+                <lightning-layout multiple-rows="true" pull-to-boundary="small">
+                    <template for:each={accountData} for:item="item">
+                        <lightning-layout-item key={item} size="4" padding="around-small">
+                            <lightning-card title={item}>
+                            <!--div class="custom-box slds-box slds-p-around_medium slds-text-align_center">{item}</div-->
+                            </lightning-card>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+        </div>
+</template>

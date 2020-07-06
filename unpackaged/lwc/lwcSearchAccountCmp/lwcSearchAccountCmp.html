@@ -1,0 +1,23 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item padding="around-small">
+            <lightning-input placeholder="Enter Name.." label="Name:" name="name" value={name} type="text" onchange={handledChange}></lightning-input>
+            <lightning-input placeholder="Enter Number of records.." label="Number#:" name="number" value={number} type="number" onchange={handledChange}></lightning-input>
+            <lightning-button label="Search" onclick={handleClick} variant="brand"></lightning-button>
+        </lightning-layout-item>
+        <div class="spinner">
+            <template if:true={isLoading}>
+                 <lightning-spinner alternative-text="Loading" variant="brand" size="small">
+                 </lightning-spinner>
+            </template>
+        </div>
+        <lightning-layout-item padding="around-small">
+            <template if:true={accountData}>
+                <c-lwc-filter-account-cmp account-data={accountData} is-show-card=true></c-lwc-filter-account-cmp>
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
